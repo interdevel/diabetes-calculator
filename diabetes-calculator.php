@@ -61,7 +61,7 @@ add_action( 'admin_init', 'dtcalc_loader_settings_init' );
 function dtcalc_tools_page() {
   ?>
   <div class="wrap">
-      <h2><?php _e( 'Diabetes Calculator Tools', 'diabetes-calculator' ) ?></h2>
+      <h2 id="calculator"><?php _e( 'Diabetes Calculator Tools', 'diabetes-calculator' ) ?></h2>
       <p><?php _e( 'Use this calculator to easily know the carbohydrates and <acronym title="">UGP</acronym> in your food.', 'diabetes-calculator' ) ?></p>
       <p><?php _e( 'Input the quantities in each field and push "Calc!" button.', 'diabetes-calculator' ) ?></p>
       <form method="post" action="">
@@ -82,7 +82,7 @@ function dtcalc_tools_page() {
       </form>
   </div>
   <div class="wrap">
-    <h2><?php _e( 'About', 'diabetes-calculator' ) ?></h2>
+    <h2 id="about"><?php _e( 'About', 'diabetes-calculator' ) ?></h2>
     <p><?php _e( 'Meals high in fat and protein may require additional insulin delivered over several hours.', 'diabetes-calculator' ) ?></p>
     <p><?php _e( 'This calculator uses the following data in order to make calculations.', 'diabetes-calculator' ) ?></p>
     <p><?php _e( 'Per gram of nutrient:', 'diabetes-calculator' ) ?></p>
@@ -91,7 +91,7 @@ function dtcalc_tools_page() {
       <li><?php _e( '1 g protein = 4 kcal', 'diabetes-calculator' ) ?></li>
       <li><?php _e( '1 g fat = 9 kcal', 'diabetes-calculator' ) ?></li>
     </ul>
-    <h2><?php _e( 'Resources', 'diabetes-calculator' ) ?></h2>
+    <h2 id="resources"><?php _e( 'Resources', 'diabetes-calculator' ) ?></h2>
     <p><?php _e( 'The information provided by this plugin is obtained from different resources:', 'diabetes-calculator' ) ?></p>
   </div>
   <?php
