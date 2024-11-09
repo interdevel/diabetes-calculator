@@ -103,21 +103,25 @@ function dtcalc_tools_page() {
           <th><?php esc_html_e( '.', 'diabetes-calculator' ) ?></th>
           <th><?php esc_html_e( 'In 100 g of nutrient (as in nutrition label)', 'diabetes-calculator' ) ?></th>
           <th><?php esc_html_e( 'Total grams in nutrient (calculated)', 'diabetes-calculator' ) ?></th>
+          <th><?php esc_html_e( 'Carbohydrates in nutrient (calculated)', 'diabetes-calculator' ) ?></th>
         </tr>
         <tr>
           <th scope="row"><?php esc_html_e( 'Fat', 'diabetes-calculator' ) ?></th>
           <td><input type="text" name="dtcalc_fat" id="dtcalc_fat"></td>
           <td><input type="text" name="dtcalc_fat_calc" id="dtcalc_fat_calc" readonly="readonly"></td>
+          <td><input type="text" name="dtcalc_fat_ch_calc" id="dtcalc_fat_calc" readonly="readonly"></td>
         </tr>
         <tr>
           <th scope="row"><?php esc_html_e( 'Carbohydrates', 'diabetes-calculator' ) ?></th>
           <td><input type="text" name="dtcalc_ch" id="dtcalc_ch"></td>
           <td><input type="text" name="dtcalc_ch_calc" id="dtcalc_ch_calc" readonly="readonly"></td>
+          <td><input type="text" name="dtcalc_ch_ch_calc" id="dtcalc_ch_calc" readonly="readonly"></td>
         </tr>
         <tr>
           <th scope="row"><?php esc_html_e( 'Proteins', 'diabetes-calculator' ) ?></th>
           <td><input type="text" name="dtcalc_prot" id="dtcalc_prot"></td>
           <td><input type="text" name="dtcalc_prot_calc" id="dtcalc_prot_calc" readonly="readonly"></td>
+          <td><input type="text" name="dtcalc_prot_ch_calc" id="dtcalc_prot_calc" readonly="readonly"></td>
         </tr>
         <tr>
           <td><input type="reset" value="<?php esc_attr_e( 'Clear the form', 'diabetes-calculator' ) ?>" class="button button-secondary" /></td>
@@ -126,6 +130,10 @@ function dtcalc_tools_page() {
         </tr>
       </table>
     </form>
+  </div>
+  <div class="wrap">
+      <p>Total Carbohydrates: <span class="total_ch"></span></p>
+      <p>Total FPU: <span class="total_fpu"></span></p>
   </div>
   <div class="wrap">
     <hr>
