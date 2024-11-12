@@ -14,64 +14,73 @@
  * Domain Path:       /languages
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
   exit;
 }
 
 
 
-define( 'DTCALC_INFO', __FILE__ );
+define('DTCALC_INFO', __FILE__);
 
 $dtcalc_resources_list = array(
-  array( 
-    'name' => 'ISPAD (International Society for Pediatric and Adolescent Diabetes) 2022 Clinical Practice Consensus Guidelines.',  
+  array(
+    'name' => 'ISPAD (International Society for Pediatric and Adolescent Diabetes) 2022 Clinical Practice Consensus Guidelines.',
     'link' => 'https://cdn.ymaws.com/www.ispad.org/resource/resmgr/consensus_guidelines_2018_/guidelines2022/Ch_10_Pediatric_Diabetes_-_2.pdf',
-    'lang' => 'English', 
+    'lang' => 'English',
   ),
   array(
     'name' => 'Efficacy of insulin dosing algorithms for high-fat high-protein mixed meals to control postprandial glycemic excursions in people living with type 1 diabetes: A systematic review and meta-analysis.',
     'link' => 'https://doi.org/10.1111/pedi.13436',
-    'lang' => 'English', 
+    'lang' => 'English',
   ),
   array(
     'name' => 'Las grasas y las proteínas también cuentan',
     'link' => 'https://diabetes.sjdhospitalbarcelona.org/es/diabetes-tipo-1/consejos/grasas-proteinas-tambien-cuentan',
-    'lang' => 'Español', 
+    'lang' => 'Español',
   ),
   array(
     'name' => 'Grasas, proteínas y su efecto en las glucemias',
     'link' => 'https://diabetesmadrid.org/grasas-proteinas-y-su-efecto-en-las-glucemias/',
-    'lang' => 'Español', 
+    'lang' => 'Español',
   )
 );
 
 
 
 // Add menu items in admin panel
-function dtcalc_loader_menu() {
-  add_options_page( 
-    __( 'Diabetes Calculator', 'diabetes-calculator' ), 
-    __( 'Diabetes Calculator', 'diabetes-calculator' ), 
-    'manage_options', 'dtcalc_loader', 'dtcalc_loader_page');
-  add_management_page( 
-    __( 'Diabetes Calculator', 'diabetes-calculator' ), 
-    __( 'Diabetes Calculator', 'diabetes-calculator' ), 
-    'manage_options', 'dtcalc_loader', 'dtcalc_tools_page');
+function dtcalc_loader_menu()
+{
+  add_options_page(
+    __('Diabetes Calculator', 'diabetes-calculator'),
+    __('Diabetes Calculator', 'diabetes-calculator'),
+    'manage_options',
+    'dtcalc_loader',
+    'dtcalc_loader_page'
+  );
+  add_management_page(
+    __('Diabetes Calculator', 'diabetes-calculator'),
+    __('Diabetes Calculator', 'diabetes-calculator'),
+    'manage_options',
+    'dtcalc_loader',
+    'dtcalc_tools_page'
+  );
 }
 add_action('admin_menu', 'dtcalc_loader_menu');
 
 // Display plugin settings page
-function dtcalc_loader_page() {
+function dtcalc_loader_page()
+{
   ?>
   <div class="wrap">
-    <h2><?php esc_html_e( 'Diabetes Calculator Settings', 'diabetes-calculator' ) ?></h2>
+    <h2><?php esc_html_e('Diabetes Calculator Settings', 'diabetes-calculator') ?></h2>
     <form method="post" action="options.php">
-      <?php settings_fields( 'dtcalc_loader_options' ); ?>
-      <?php do_settings_sections( 'dtcalc_loader_options' ); ?>
+      <?php settings_fields('dtcalc_loader_options'); ?>
+      <?php do_settings_sections('dtcalc_loader_options'); ?>
       <table class="form-table">
         <tr valign="top">
-          <th scope="row"><?php esc_html_e( 'Test option: ', 'diabetes-calculator' ) ?></th>
-          <td><input type="text" name="dtcalc_id" value="<?php echo esc_attr( get_option('dtcalc_test_option') ); ?>" /></td>
+          <th scope="row"><?php esc_html_e('Test option: ', 'diabetes-calculator') ?></th>
+          <td><input type="text" name="dtcalc_id" value="<?php echo esc_attr(get_option('dtcalc_test_option')); ?>" />
+          </td>
         </tr>
       </table>
       <?php submit_button(); ?>
@@ -81,98 +90,149 @@ function dtcalc_loader_page() {
 }
 
 // Initialize plugin settings
-function dtcalc_loader_settings_init() {
-  register_setting( 'dtcalc_loader_options', 'dtcalc_test_option' );
+function dtcalc_loader_settings_init()
+{
+  register_setting('dtcalc_loader_options', 'dtcalc_test_option');
 }
-add_action( 'admin_init', 'dtcalc_loader_settings_init' );
+add_action('admin_init', 'dtcalc_loader_settings_init');
 
 // Display Diabetes Calculator tools in admin panel
-function dtcalc_tools_page() {
+function dtcalc_tools_page()
+{
   ?>
   <div class="wrap">
-    <h2 id="calculator"><?php esc_html_e( 'Diabetes Calculator Tools', 'diabetes-calculator' ) ?></h2>
-    <p><?php _e( 'Use this calculator to easily know the carbohydrates and <acronym title="Fat Protein Units">FPU</acronym> in your food.', 'diabetes-calculator' ) ?></p>
-    <p><?php esc_html_e( 'Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'diabetes-calculator' ) ?></p>
+    <h2 id="calculator"><?php esc_html_e('Diabetes Calculator Tools', 'diabetes-calculator') ?></h2>
+    <p>
+      <?php _e('Use this calculator to easily know the carbohydrates and <acronym title="Fat Protein Units">FPU</acronym> in your food.', 'diabetes-calculator') ?>
+    </p>
+    <p>
+      <?php esc_html_e('Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'diabetes-calculator') ?>
+    </p>
     <form method="post" action="">
       <div class="form-field">
-        <label for="dtcalc_nutrient_grams"><?php esc_html_e( 'Grams of nutrient: ', 'diabetes-calculator' ) ?></label>
-        <input type="text" name="dtcalc_nutrient_grams" id="dtcalc_nutrient_grams" size="10" maxlength="4" autocomplete="off">
+        <label for="dtcalc_nutrient_grams"><?php esc_html_e('Grams of nutrient: ', 'diabetes-calculator') ?></label>
+        <input type="text" name="dtcalc_nutrient_grams" id="dtcalc_nutrient_grams" size="10" maxlength="4"
+          autocomplete="off">
       </div>
       <table class="form-table dtcalc-table">
         <tr valign="bottom">
-          <th><?php esc_html_e( '.', 'diabetes-calculator' ) ?></th>
-          <th><?php esc_html_e( 'In 100 g of nutrient (as in nutrition label)', 'diabetes-calculator' ) ?></th>
-          <th><?php esc_html_e( 'Total grams in nutrient (calculated)', 'diabetes-calculator' ) ?></th>
-          <th><?php esc_html_e( 'Carbohydrates in nutrient (calculated)', 'diabetes-calculator' ) ?></th>
+          <th><?php esc_html_e('.', 'diabetes-calculator') ?></th>
+          <th><?php esc_html_e('In 100 g of nutrient (as in nutrition label)', 'diabetes-calculator') ?></th>
+          <th><?php esc_html_e('Total grams in nutrient (calculated)', 'diabetes-calculator') ?></th>
+          <th><?php esc_html_e('Carbohydrates in nutrient (calculated)', 'diabetes-calculator') ?></th>
         </tr>
         <tr>
-          <th scope="row"><?php esc_html_e( 'Fat', 'diabetes-calculator' ) ?></th>
+          <th scope="row"><?php esc_html_e('Fat', 'diabetes-calculator') ?></th>
           <td><input type="text" name="dtcalc_fat" id="dtcalc_fat"></td>
           <td><input type="text" name="dtcalc_fat_calc" id="dtcalc_fat_calc" readonly="readonly"></td>
-          <td><input type="text" name="dtcalc_fat_ch_calc" id="dtcalc_fat_calc" readonly="readonly"></td>
+          <td><input type="text" name="dtcalc_fat_ch_calc" id="dtcalc_fat_ch_calc" readonly="readonly"></td>
         </tr>
         <tr>
-          <th scope="row"><?php esc_html_e( 'Carbohydrates', 'diabetes-calculator' ) ?></th>
+          <th scope="row"><?php esc_html_e('Carbohydrates', 'diabetes-calculator') ?></th>
           <td><input type="text" name="dtcalc_ch" id="dtcalc_ch"></td>
           <td><input type="text" name="dtcalc_ch_calc" id="dtcalc_ch_calc" readonly="readonly"></td>
-          <td><input type="text" name="dtcalc_ch_ch_calc" id="dtcalc_ch_calc" readonly="readonly"></td>
+          <td><input type="text" name="dtcalc_ch_ch_calc" id="dtcalc_ch_ch_calc" readonly="readonly"></td>
         </tr>
         <tr>
-          <th scope="row"><?php esc_html_e( 'Proteins', 'diabetes-calculator' ) ?></th>
+          <th scope="row"><?php esc_html_e('Proteins', 'diabetes-calculator') ?></th>
           <td><input type="text" name="dtcalc_prot" id="dtcalc_prot"></td>
           <td><input type="text" name="dtcalc_prot_calc" id="dtcalc_prot_calc" readonly="readonly"></td>
-          <td><input type="text" name="dtcalc_prot_ch_calc" id="dtcalc_prot_calc" readonly="readonly"></td>
+          <td><input type="text" name="dtcalc_prot_ch_calc" id="dtcalc_prot_ch_calc" readonly="readonly"></td>
         </tr>
         <tr>
-          <td><input type="reset" value="<?php esc_attr_e( 'Clear the form', 'diabetes-calculator' ) ?>" class="button button-secondary" /></td>
-          <td><?php submit_button( __( 'Calculate this!', 'diabetes-calculator' ) ); ?></td>
+          <td><input type="reset" value="<?php esc_attr_e('Clear the form', 'diabetes-calculator') ?>"
+              class="button button-secondary" /></td>
+
+          <td><button id="calculate">Calculate this!</button></td>
           <td>&nbsp;</td>
         </tr>
       </table>
     </form>
   </div>
   <div class="wrap">
-      <p>Total Carbohydrates: <span class="total_ch"></span></p>
-      <p>Total FPU: <span class="total_fpu"></span></p>
+    <p>Total Carbohydrates: <span class="total_ch" id="total_ch"></span></p>
+    <p>Total FPU: <span class="total_fpu" id="total_fpu"></span></p>
   </div>
   <div class="wrap">
     <hr>
-    <h3 id="about"><?php esc_html_e( 'About', 'diabetes-calculator' ) ?></h3>
-    <p><?php esc_html_e( 'Meals high in fat and protein may require additional insulin delivered over several hours.', 'diabetes-calculator' ) ?></p>
-    <p><?php esc_html_e( 'This calculator uses the following data in order to make calculations.', 'diabetes-calculator' ) ?></p>
-    <p><?php esc_html_e( 'Per gram of nutrient:', 'diabetes-calculator' ) ?></p>
+    <h3 id="about"><?php esc_html_e('About', 'diabetes-calculator') ?></h3>
+    <p>
+      <?php esc_html_e('Meals high in fat and protein may require additional insulin delivered over several hours.', 'diabetes-calculator') ?>
+    </p>
+    <p>
+      <?php esc_html_e('This calculator uses the following data in order to make calculations.', 'diabetes-calculator') ?>
+    </p>
+    <p><?php esc_html_e('Per gram of nutrient:', 'diabetes-calculator') ?></p>
     <ul class="simple-ul">
-      <li><?php esc_html_e( '1 g carbohydrate = 4 kcal', 'diabetes-calculator' ) ?></li>
-      <li><?php esc_html_e( '1 g protein = 4 kcal', 'diabetes-calculator' ) ?></li>
-      <li><?php esc_html_e( '1 g fat = 9 kcal', 'diabetes-calculator' ) ?></li>
+      <li><?php esc_html_e('1 g carbohydrate = 4 kcal', 'diabetes-calculator') ?></li>
+      <li><?php esc_html_e('1 g protein = 4 kcal', 'diabetes-calculator') ?></li>
+      <li><?php esc_html_e('1 g fat = 9 kcal', 'diabetes-calculator') ?></li>
     </ul>
-    <h3 id="resources"><?php esc_html_e( 'Resources', 'diabetes-calculator' ) ?></h3>
-    <p><?php esc_html_e( 'The information and calculations provided by this plugin are obtained from several resources:', 'diabetes-calculator' ) ?></p>
+    <h3 id="resources"><?php esc_html_e('Resources', 'diabetes-calculator') ?></h3>
+    <p>
+      <?php esc_html_e('The information and calculations provided by this plugin are obtained from several resources:', 'diabetes-calculator') ?>
+    </p>
     <ul class="simple-ul dtcalc-resources-list">
-      <?php 
+      <?php
       global $dtcalc_resources_list;
-      foreach ( $dtcalc_resources_list as $data ) {
-      ?>
-        <li>(<?php echo esc_html( $data['lang'] ) ?>) <a href="<?php echo esc_attr( $data['link'] ) ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $data['name'] ) ?></a></li>
+      foreach ($dtcalc_resources_list as $data) {
+        ?>
+        <li>(<?php echo esc_html($data['lang']) ?>) <a href="<?php echo esc_attr($data['link']) ?>" target="_blank"
+            rel="noopener noreferrer"><?php echo esc_html($data['name']) ?></a></li>
       <?php } ?>
     </ul>
   </div>
 
-<script>
-// Functions that make the calculator work.
-</script>
+  <script>
+    // Functions that make the calculator work.
+
+    document.addEventListener("DOMContentLoaded", () => {
+      var button = document.getElementById("calculate");
+
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        var dtcalc_nutrient_grams = parseFloat(document.getElementById("dtcalc_nutrient_grams").value);
+        var dtcalc_fat = parseFloat(document.getElementById("dtcalc_fat").value);
+        var dtcalc_ch = parseFloat(document.getElementById("dtcalc_ch").value);
+        var dtcalc_prot = parseFloat(document.getElementById("dtcalc_prot").value);
+       
+        var gram_consum_fat = parseFloat((dtcalc_nutrient_grams * dtcalc_fat) / 100);
+        var gram_consum_ch = parseFloat((dtcalc_nutrient_grams * dtcalc_ch) / 100);
+        var gram_consum_prot = parseFloat((dtcalc_nutrient_grams * dtcalc_prot) / 100);
+
+        var ra_consum_ch = gram_consum_ch;
+        var ra_consum_fat = (gram_consum_fat * 9) / 10;
+        var ra_consum_prot = (gram_consum_prot * 4) / 10;
+        var total_fpu = ra_consum_fat + ra_consum_prot;
+        
+        
+        document.getElementById("dtcalc_ch_calc").value = gram_consum_ch;
+        document.getElementById("dtcalc_ch_ch_calc").value = ra_consum_ch;
+        document.getElementById("dtcalc_fat_calc").value = gram_consum_fat;
+        document.getElementById("dtcalc_fat_ch_calc").value = ra_consum_fat;
+        document.getElementById("dtcalc_prot_calc").value = gram_consum_prot;
+        document.getElementById("dtcalc_prot_ch_calc").value = ra_consum_prot;
+        document.getElementById("total_fpu").innerHTML = total_fpu;
+        document.getElementById("total_ch").innerHTML = gram_consum_ch;
+
+        
+      });
+    });
+  </script>
 
   <?php
 }
 
 
-function dtcalc_load_assets( $h ) {
-  if ( 'tools_page_dtcalc_loader' != $h ) {
+function dtcalc_load_assets($h)
+{
+  if ('tools_page_dtcalc_loader' != $h) {
     return;
   }
-  wp_register_style( 'dtcalc_admin_css', plugin_dir_url( DTCALC_INFO ) . 'assets/dtcalc.css', false, '1.0.0' );
-  wp_enqueue_style( 'dtcalc_admin_css' );        
+  wp_register_style('dtcalc_admin_css', plugin_dir_url(DTCALC_INFO) . 'assets/dtcalc.css', false, '1.0.0');
+  wp_enqueue_style('dtcalc_admin_css');
   //wp_enqueue_script( 'dtcalc', plugin_dir_url( DTCALC_INFO ) . 'assets/dtcalc.css', array(), '1.0' );
 }
-add_action( 'admin_enqueue_scripts', 'dtcalc_load_assets' );
+add_action('admin_enqueue_scripts', 'dtcalc_load_assets');
 
