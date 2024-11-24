@@ -9,7 +9,7 @@ Stable tag: 0.0.1
 License: GPL v2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
-The **Diabetes Calculator** plugin helps individuals with diabetes manage their diet by calculating Carbohydrates and Fat Protein Units (FPU) for common meals.
+This plugin helps individuals with diabetes manage their diet by calculating Carbohydrates and Fat Protein Units (FPU) for common meals.
 
 == Description ==
 
