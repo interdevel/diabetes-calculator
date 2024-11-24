@@ -1,13 +1,15 @@
 === Diabetes Calculator ===
 
 Contributors: interdevel, manuelgarcia07  
-Tags: diabetes, health, calculator, carbohydrates, FPU, recipes  
+Tags: diabetes, health, calculator, carbohydrates, recipes
 Requires at least: 5.3  
-Tested up to: 6.3  
+Tested up to: 6.7 
 Requires PHP: 7.4  
 Stable tag: 0.0.1  
 License: GPL v2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
+
+The **Diabetes Calculator** plugin helps individuals with diabetes manage their diet by calculating Carbohydrates and Fat Protein Units (FPU) for common meals.
 
 == Description ==
 
