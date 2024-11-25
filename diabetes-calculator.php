@@ -148,16 +148,14 @@ function dtcalc_tools_page()
           <td><input type="text" name="dtcalc_prot_ch_calc" id="dtcalc_prot_ch_calc" readonly="readonly" tabindex="-1"></td>
         </tr>
         <tr>
-          <td><input type="reset" value="<?php esc_attr_e('Clear the form', 'diabetes-calculator') ?>"
-              class="button button-secondary" /></td>
-
+          <td><input type="reset" id="reset" value="<?php esc_attr_e('Clear the form', 'diabetes-calculator') ?>" class="button button-secondary" /></td>
           <td><button id="calculate">Calculate this!</button></td>
-          <td>&nbsp;</td>
+          <td colspan="2"><div id="dtcalc-calc-msg" class="dtcalc-calc-msg"><p><?php esc_html_e('Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'diabetes-calculator') ?></p></div></td>
         </tr>
       </table>
     </form>
   </div>
-  <div class="wrap dtcalc-results">
+  <div class="wrap dtcalc-results-container">
     <p>Total Carbohydrates: <span class="total_ch" id="total_ch"></span></p>
     <p>Total FPU: <span class="total_fpu" id="total_fpu"></span></p>
   </div>
@@ -202,7 +200,7 @@ function dtcalc_load_assets( $h )
   }
   wp_register_style( 'dtcalc_admin_css', DTCALC_PLUGIN_URL . 'assets/dtcalc.css', false, '1.0.0' );
   wp_enqueue_style( 'dtcalc_admin_css' );
-  wp_enqueue_script( 'dtcalc_js', DTCALC_PLUGIN_URL . 'assets/dtcalc.js', array(), '1.0' );
+  wp_enqueue_script( 'dtcalc_js', DTCALC_PLUGIN_URL . 'assets/dtcalc.js', array(), '1.0', array( 'in_footer' => true ) );
 }
 add_action( 'admin_enqueue_scripts', 'dtcalc_load_assets' );
 

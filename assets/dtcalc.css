@@ -17,10 +17,22 @@
   padding-left: 1em;
 }
 
-.dtcalc-results {
+.dtcalc-calc-msg {
+  background-color: #EFEFEF;
+  border: 1px solid #444;
+  padding: 0 1rem;
+  margin: 0;
+}
+
+.dtcalc-results-container {
+  background-color: #EFEFEF;
+  border: 3px solid #444;
+  padding: 0 1rem;
+  margin: 2rem;
   width: 60%;
 }
 
-.dtcalc-results p {
+.dtcalc-results-container p {
   font-size: 120%;
 }
+

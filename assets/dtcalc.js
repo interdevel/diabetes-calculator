@@ -10,6 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
     var dtcalc_fat = parseFloat(document.getElementById("dtcalc_fat").value);
     var dtcalc_ch = parseFloat(document.getElementById("dtcalc_ch").value);
     var dtcalc_prot = parseFloat(document.getElementById("dtcalc_prot").value);
+
+    var validate_empty = isNaN(dtcalc_nutrient_grams) || isNaN(dtcalc_fat) || isNaN(dtcalc_ch) || isNaN(dtcalc_prot);
+    var msg = "";
+    if (validate_empty) {
+        msg = 'Please fill in all the fields to calculate values.';
+        document.getElementById("dtcalc-calc-msg").className = 'dtcalc-calc-msg';
+        document.getElementById("dtcalc-calc-msg").innerHTML = '<p>' + msg + '</p>';
+        return;
+    }
    
     var gram_consum_fat = parseFloat((dtcalc_nutrient_grams * dtcalc_fat) / 100);
     var gram_consum_ch = parseFloat((dtcalc_nutrient_grams * dtcalc_ch) / 100);
