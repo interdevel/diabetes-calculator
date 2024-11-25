@@ -5,14 +5,16 @@
 
 # OS files
 .htaccess
-.DS_Store
-.DS_Store?
-.localized
-.Spotlight-V100
-.Trashes
+[Tt]humbs.db
+[Dd]esktop.ini
+*.DS_store
+.DS_store?
 Icon?
 ehthumbs.db
-[Tt]humbs.db
+.localized
+.Spotlight-V100
+._*
+.Trashes
 sftp-config.json
 sftp.json
 .well-known
@@ -30,3 +32,12 @@ sftp.json
 *.tar
 *.zip
 *.swp
+
+# Build & Vendor
+build
+build-cs/composer.lock
+build-cs/vendor/
+build-phpunit/composer.lock
+build-phpunit/vendor/
+node_modules/
+vendor/
