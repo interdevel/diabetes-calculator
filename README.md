@@ -1,7 +1,7 @@
-=== Diabetes Calculator ===
+=== Utilities for Diabetes Care ===
 
 Contributors: interdevel, manuelgarcia07  
-Tags: diabetes, health, calculator, carbohydrates, recipes
+Tags: diabetes, health, carbohydrates, recipes
 Requires at least: 5.3  
 Tested up to: 6.7 
 Requires PHP: 7.4  
@@ -13,7 +13,7 @@ This plugin helps individuals with diabetes manage their diet by calculating Car
 
 == Description ==
 
-The **Diabetes Calculator** plugin helps individuals with diabetes manage their diet by calculating Carbohydrates and Fat Protein Units (FPU) for common meals. This tool is useful for determining the estimated insulin needed for high-fat and high-protein meals, making diabetes care simpler and more accurate.
+The **Utilities for Diabetes Care** plugin helps individuals with diabetes manage their diet by calculating Carbohydrates and Fat Protein Units (FPU) for common meals. This tool is useful for determining the estimated insulin needed for high-fat and high-protein meals, making diabetes care simpler and more accurate.
 
 == Features ==
 
@@ -33,9 +33,9 @@ The plugin uses data from the following reputable sources:
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/diabetes-calculator` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/utilities-for-diabetes-care` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to **Settings > Diabetes Calculator** to configure the plugin options.
+3. Go to **Settings > Diabetes Care Utils** to configure the plugin options.
 
 == Frequently Asked Questions ==
 
@@ -47,15 +47,10 @@ The plugin applies scientific formulas that consider grams of fat and protein to
 
 No. This plugin is a tool to assist with calculations; users should consult healthcare professionals for personalized medical advice.
 
-== Screenshots ==
-
-1. **Calculator Settings** - Plugin settings page in WordPress admin.
-2. **Calculator Interface** - Main tool interface with fields for nutrient data and calculated FPU values.
-
 == Changelog ==
 
 = 0.0.1 =
-* Initial release of the Diabetes Calculator plugin.
+* Initial release of the _Utilities for Diabetes Care_ plugin.
 
 == Upgrade Notice ==
 
