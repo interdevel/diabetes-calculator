@@ -11,7 +11,7 @@
  * Author URI:        https://github.com/interdevel
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       diabetes-care-utils
+ * Text Domain:       utilities-for-diabetes-care
  * Domain Path:       /languages
  */
 
@@ -53,15 +53,15 @@ $dtcalc_resources_list = array(
 function dtcalc_loader_menu()
 {
   add_options_page(
-    __('Diabetes Care Utils', 'diabetes-care-utils'),
-    __('Diabetes Care Utils', 'diabetes-care-utils'),
+    __('Diabetes Care Utils', 'utilities-for-diabetes-care'),
+    __('Diabetes Care Utils', 'utilities-for-diabetes-care'),
     'manage_options',
     'dtcalc_loader',
     'dtcalc_loader_page'
   );
   add_management_page(
-    __('Diabetes Care Utils', 'diabetes-care-utils'),
-    __('Diabetes Care Utils', 'diabetes-care-utils'),
+    __('Diabetes Care Utils', 'utilities-for-diabetes-care'),
+    __('Diabetes Care Utils', 'utilities-for-diabetes-care'),
     'manage_options',
     'dtcalc_loader',
     'dtcalc_tools_page'
@@ -74,13 +74,13 @@ function dtcalc_loader_page()
 {
   ?>
   <div class="wrap">
-    <h2><?php esc_html_e('Diabetes Care Utils Settings', 'diabetes-care-utils') ?></h2>
+    <h2><?php esc_html_e('Diabetes Care Utils Settings', 'utilities-for-diabetes-care') ?></h2>
     <form method="post" action="options.php">
       <?php settings_fields('dtcalc_loader_options'); ?>
       <?php do_settings_sections('dtcalc_loader_options'); ?>
       <table class="form-table">
         <tr valign="top">
-          <th scope="row"><?php esc_html_e('Test option: ', 'diabetes-care-utils') ?></th>
+          <th scope="row"><?php esc_html_e('Test option: ', 'utilities-for-diabetes-care') ?></th>
           <td><input type="text" name="dtcalc_id" value="<?php echo esc_attr(get_option('dtcalc_test_option')); ?>" />
           </td>
         </tr>
@@ -103,10 +103,10 @@ function dtcalc_tools_page()
 {
   ?>
   <div class="wrap">
-    <h1 id="calculator"><?php esc_html_e('Utilities for Diabetes Care', 'diabetes-care-utils') ?></h1>
+    <h1 id="calculator"><?php esc_html_e('Utilities for Diabetes Care', 'utilities-for-diabetes-care') ?></h1>
     <p>
       <?php echo wp_kses( 
-        __( 'Use this calculator to easily know the carbohydrates and <acronym title="Fat Protein Units">FPU</acronym> in your food.', 'diabetes-care-utils' ),
+        __( 'Use this calculator to easily know the carbohydrates and <acronym title="Fat Protein Units">FPU</acronym> in your food.', 'utilities-for-diabetes-care' ),
         array( 
           'acronym' => array(
             'title' => array()
@@ -114,43 +114,43 @@ function dtcalc_tools_page()
          ) ) ?>
     </p>
     <p>
-      <?php esc_html_e('Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'diabetes-care-utils') ?>
+      <?php esc_html_e('Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'utilities-for-diabetes-care') ?>
     </p>
     <form method="post" action="">
       <div class="form-field">
-        <label for="dtcalc_nutrient_grams"><?php esc_html_e('Grams of nutrient: ', 'diabetes-care-utils') ?></label>
+        <label for="dtcalc_nutrient_grams"><?php esc_html_e('Grams of nutrient: ', 'utilities-for-diabetes-care') ?></label>
         <input type="text" name="dtcalc_nutrient_grams" id="dtcalc_nutrient_grams" size="10" maxlength="4"
           autocomplete="off">
       </div>
       <table class="form-table dtcalc-table">
         <tr valign="bottom">
-          <th><?php esc_html_e('.', 'diabetes-care-utils') ?></th>
-          <th><?php esc_html_e('In 100 g of nutrient (as in nutrition label)', 'diabetes-care-utils') ?></th>
-          <th><?php esc_html_e('Total grams in nutrient (calculated)', 'diabetes-care-utils') ?></th>
-          <th><?php esc_html_e('Carbohydrates in nutrient (calculated)', 'diabetes-care-utils') ?></th>
+          <th><?php esc_html_e('.', 'utilities-for-diabetes-care') ?></th>
+          <th><?php esc_html_e('In 100 g of nutrient (as in nutrition label)', 'utilities-for-diabetes-care') ?></th>
+          <th><?php esc_html_e('Total grams in nutrient (calculated)', 'utilities-for-diabetes-care') ?></th>
+          <th><?php esc_html_e('Carbohydrates in nutrient (calculated)', 'utilities-for-diabetes-care') ?></th>
         </tr>
         <tr>
-          <th scope="row"><?php esc_html_e('Fat', 'diabetes-care-utils') ?></th>
+          <th scope="row"><?php esc_html_e('Fat', 'utilities-for-diabetes-care') ?></th>
           <td><input type="text" name="dtcalc_fat" id="dtcalc_fat"></td>
           <td><input type="text" name="dtcalc_fat_calc" id="dtcalc_fat_calc" readonly="readonly" tabindex="-1"></td>
           <td><input type="text" name="dtcalc_fat_ch_calc" id="dtcalc_fat_ch_calc" readonly="readonly" tabindex="-1"></td>
         </tr>
         <tr>
-          <th scope="row"><?php esc_html_e('Carbohydrates', 'diabetes-care-utils') ?></th>
+          <th scope="row"><?php esc_html_e('Carbohydrates', 'utilities-for-diabetes-care') ?></th>
           <td><input type="text" name="dtcalc_ch" id="dtcalc_ch"></td>
           <td><input type="text" name="dtcalc_ch_calc" id="dtcalc_ch_calc" readonly="readonly" tabindex="-1"></td>
           <td><input type="text" name="dtcalc_ch_ch_calc" id="dtcalc_ch_ch_calc" readonly="readonly" tabindex="-1"></td>
         </tr>
         <tr>
-          <th scope="row"><?php esc_html_e('Proteins', 'diabetes-care-utils') ?></th>
+          <th scope="row"><?php esc_html_e('Proteins', 'utilities-for-diabetes-care') ?></th>
           <td><input type="text" name="dtcalc_prot" id="dtcalc_prot"></td>
           <td><input type="text" name="dtcalc_prot_calc" id="dtcalc_prot_calc" readonly="readonly" tabindex="-1"></td>
           <td><input type="text" name="dtcalc_prot_ch_calc" id="dtcalc_prot_ch_calc" readonly="readonly" tabindex="-1"></td>
         </tr>
         <tr>
-          <td><input type="reset" id="reset" value="<?php esc_attr_e('Clear the form', 'diabetes-care-utils') ?>" class="button button-secondary" /></td>
+          <td><input type="reset" id="reset" value="<?php esc_attr_e('Clear the form', 'utilities-for-diabetes-care') ?>" class="button button-secondary" /></td>
           <td><button id="calculate">Calculate this!</button></td>
-          <td colspan="2"><div id="dtcalc-calc-msg" class="dtcalc-calc-msg"><p><?php esc_html_e('Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'diabetes-care-utils') ?></p></div></td>
+          <td colspan="2"><div id="dtcalc-calc-msg" class="dtcalc-calc-msg"><p><?php esc_html_e('Input the quantities in each field as in nutrition label, and push "Calculate this!" button.', 'utilities-for-diabetes-care') ?></p></div></td>
         </tr>
       </table>
     </form>
@@ -161,22 +161,22 @@ function dtcalc_tools_page()
   </div>
   <div class="wrap">
     <hr>
-    <h3 id="about"><?php esc_html_e('About', 'diabetes-care-utils') ?></h3>
+    <h3 id="about"><?php esc_html_e('About', 'utilities-for-diabetes-care') ?></h3>
     <p>
-      <?php esc_html_e('Meals high in fat and protein may require additional insulin delivered over several hours.', 'diabetes-care-utils') ?>
+      <?php esc_html_e('Meals high in fat and protein may require additional insulin delivered over several hours.', 'utilities-for-diabetes-care') ?>
     </p>
     <p>
-      <?php esc_html_e('This calculator uses the following data in order to make calculations.', 'diabetes-care-utils') ?>
+      <?php esc_html_e('This calculator uses the following data in order to make calculations.', 'utilities-for-diabetes-care') ?>
     </p>
-    <p><?php esc_html_e('Per gram of nutrient:', 'diabetes-care-utils') ?></p>
+    <p><?php esc_html_e('Per gram of nutrient:', 'utilities-for-diabetes-care') ?></p>
     <ul class="simple-ul">
-      <li><?php esc_html_e('1 g carbohydrate = 4 kcal', 'diabetes-care-utils') ?></li>
-      <li><?php esc_html_e('1 g protein = 4 kcal', 'diabetes-care-utils') ?></li>
-      <li><?php esc_html_e('1 g fat = 9 kcal', 'diabetes-care-utils') ?></li>
+      <li><?php esc_html_e('1 g carbohydrate = 4 kcal', 'utilities-for-diabetes-care') ?></li>
+      <li><?php esc_html_e('1 g protein = 4 kcal', 'utilities-for-diabetes-care') ?></li>
+      <li><?php esc_html_e('1 g fat = 9 kcal', 'utilities-for-diabetes-care') ?></li>
     </ul>
-    <h3 id="resources"><?php esc_html_e('Resources', 'diabetes-care-utils') ?></h3>
+    <h3 id="resources"><?php esc_html_e('Resources', 'utilities-for-diabetes-care') ?></h3>
     <p>
-      <?php esc_html_e('The information and calculations provided by this plugin are obtained from several resources:', 'diabetes-care-utils') ?>
+      <?php esc_html_e('The information and calculations provided by this plugin are obtained from several resources:', 'utilities-for-diabetes-care') ?>
     </p>
     <ul class="simple-ul dtcalc-resources-list">
       <?php
